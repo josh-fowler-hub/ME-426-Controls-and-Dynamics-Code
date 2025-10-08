@@ -1,0 +1,6 @@
+Circuit,Vin- (V),Vin+ (V),Vs- (V),	Vs+ (V)
+Null Offset,0,	0,	-6.03,	6.04
+Comparator,0,0.5,-6.03,6.04
+Follower,	Vout,0,-6.03,	6.04
+Inverting	,0.464,0,	-6.03,	6.04
+Non-Inverting,0,0.512,-6.03,6.04

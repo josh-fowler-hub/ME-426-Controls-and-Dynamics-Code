@@ -1,0 +1,38 @@
+﻿# encoding: utf-8
+# Release 18.2
+SetScriptVersion(Version="18.2.109")
+template1 = GetTemplate(TemplateName="EngData")
+system1 = template1.CreateSystem()
+engineeringData1 = system1.GetContainer(ComponentName="Engineering Data")
+matl1 = engineeringData1.CreateMaterial(Name="Aluminum")
+matl1.Delete()
+material1 = engineeringData1.GetMaterial(Name="Structural Steel")
+material1.Delete()
+favorites1 = EngData.LoadFavoriteItems()
+library1 = EngData.OpenLibrary(
+    Name="General Materials",
+    Source="General_Materials.xml")
+library2 = EngData.OpenLibrary(
+    Name="General Non-linear Materials",
+    Source="General Materials Non-linear.xml")
+engineeringDataComponent1 = system1.GetComponent(Name="Engineering Data")
+engineeringDataComponent1.Update(AllDependencies=True)
+EngData.EnableFilter(Enable=False)
+EngData.EnableFilter()
+matl2 = engineeringData1.ImportMaterial(
+    Name="Aluminum Alloy",
+    Source="General_Materials.xml")
+EngData.EnableFilter(Enable=False)
+system1.Update(AllDependencies=True)
+fileType1 = GetFileType(Name="GeometryFileType")
+ImportFile(
+    FilePath="C:/Anaconda3/My_Scripts/Controls_Lab/Lab_10_beam.x_t",
+    FileType=fileType1)
+system2 = GetSystem(Name="Geometry")
+geometryComponent1 = system2.GetComponent(Name="Geometry")
+geometryComponent1.Update(AllDependencies=True)
+template2 = GetTemplate(TemplateName="ExternalConnection")
+system3 = template2.CreateSystem()
+system3.Delete()
+Save(Overwrite=True)
+Open(FilePath="C:/Users/jfowl/FEA_Final_Project.wbpj")

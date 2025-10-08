@@ -1,0 +1,6 @@
+﻿Circuit,Vout (V),Pk-Pk (V),Freq (Hz),RMS (V)
+Null Offset,5.52,-,-,-
+Comparator,0.601,9.6,998.7,6.79
+Follower,-0.0977,3.02,998,2.14
+Inverting,0.157,4.32,1002.8,3.05
+Non-Inverting,-0.0732,5.44,912.6,3.85

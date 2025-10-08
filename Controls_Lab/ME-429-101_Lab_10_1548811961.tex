@@ -1,0 +1,359 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{csvsimple}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{etoolbox}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color}
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\ttm,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\ttm\color{gray},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\ttb\color{blue},       % keyword style
+  stringstyle=\ttm\color{mygreen},     % string literal style
+}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+\begin{document}
+\title{ME-429-101\\Controls and Instrumentation Lab\\Lab 10: Piezoelectric Accelerometer}
+\date{01/29/19}
+\author{Josh Fowler, Tyler Kendrick, Kanan Aljeneede}
+\maketitle
+\begin{figure}[h!tb]
+\centering\noindent\makebox[\linewidth]{\rule{16cm}{0.4pt}}
+\end{figure}
+\section*{Author Contributions}
+Josh Fowler (author percent\%): author tasks\\
+Tyler Kendrick (author percent\%): author tasks\\
+Kanan Aljeneede (author percent\%): author tasks\\
+\section*{Statement of Quality}
+
+This Report is an original work of the above mentioned authors.\\\\\
+\noindent\begin{tabular}{ll}\makebox[2.5in]{\hrulefill} &\makebox[2.5in]{\hrulefill}\\
+Author & Date\\[8ex]\makebox[2.5in]{\hrulefill} &\makebox[2.5in]{\hrulefill}\\
+Author & Date\\[8ex]\makebox[2.5in]{\hrulefill} &\makebox[2.5in]{\hrulefill}\\
+Author & Date\\[8ex]\end{tabular}
+\thispagestyle{empty}
+\newpage
+\pagenumbering{arabic}
+\section*{Introduction}
+
+\section*{Theory and Methods}
+
+\section*{Results}
+
+\section*{Conclusions and Recomendations}
+
+\appendix
+\section*{Appendix}
+\section{: Collected Data}
+\begin{center}
+\captionof{table}{your caption\protect\footnotemark}
+\footnotetext{Due to the size of this data set, this table has been abbreviated}
+\begin{tabular}{|l|l|}\hline
+0.0&0.617821\\ \hline
+0.0010000000000000009&0.539514\\ \hline
+0.0020000000000000018&0.47404\\ \hline
+0.0030000000000000027&0.295054\\ \hline
+0.0040000000000000036&0.40034\\ \hline
+0.0050000000000000044&0.503651\\ \hline
+.&.\\
+.&.\\
+.&.\\
+3.752&-0.00139203\\ \hline
+3.753&-0.00139203\\ \hline
+3.754&-0.00139203\\ \hline
+3.755&-0.00139203\\ \hline
+3.756&-0.00172105\\ \hline
+3.757&-0.00139203\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{your caption\protect\footnotemark}
+\footnotetext{Due to the size of this data set, this table has been abbreviated}
+\begin{tabular}{|l|l|}\hline
+0.0&0.633614\\ \hline
+0.0010000000000000009&0.25952\\ \hline
+0.0020000000000000018&0.137125\\ \hline
+0.0030000000000000027&0.0473028\\ \hline
+0.0040000000000000036&0.235501\\ \hline
+0.0050000000000000044&0.242082\\ \hline
+.&.\\
+.&.\\
+.&.\\
+3.336&-0.00172105\\ \hline
+3.337&-0.00172105\\ \hline
+3.338&-0.00139203\\ \hline
+3.339&-0.00172105\\ \hline
+3.34&-0.00139203\\ \hline
+3.341&-0.00139203\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{your caption\protect\footnotemark}
+\footnotetext{Due to the size of this data set, this table has been abbreviated}
+\begin{tabular}{|l|l|}\hline
+0.0&0.180884\\ \hline
+0.0010000000000000009&0.0976426\\ \hline
+0.0020000000000000018&0.0492769\\ \hline
+0.0030000000000000027&0.0463157\\ \hline
+0.0040000000000000036&0.0831658\\ \hline
+0.0050000000000000044&0.105539\\ \hline
+.&.\\
+.&.\\
+.&.\\
+3.205&-0.00172105\\ \hline
+3.2060000000000004&-0.00237908\\ \hline
+3.207&-0.00139203\\ \hline
+3.208&-0.00237908\\ \hline
+3.2089999999999996&-0.00237908\\ \hline
+3.21&-0.0027081\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{your caption\protect\footnotemark}
+\footnotetext{Due to the size of this data set, this table has been abbreviated}
+\begin{tabular}{|l|l|}\hline
+0.0&0.365135\\ \hline
+0.0010000000000000009&0.23254\\ \hline
+0.0020000000000000018&0.0890882\\ \hline
+0.0030000000000000027&0.224973\\ \hline
+0.0040000000000000036&0.222012\\ \hline
+0.0050000000000000044&0.288802\\ \hline
+.&.\\
+.&.\\
+.&.\\
+3.396&-0.00402418\\ \hline
+3.3970000000000002&-0.00369516\\ \hline
+3.398&-0.00303712\\ \hline
+3.399&-0.00303712\\ \hline
+3.4&-0.00369516\\ \hline
+3.4010000000000002&-0.00303712\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{your caption\protect\footnotemark}
+\footnotetext{Due to the size of this data set, this table has been abbreviated}
+\begin{tabular}{|l|l|}\hline
+0.0&0.0036591\\ \hline
+0.25&0.00248926\\ \hline
+0.5&5.37e-05\\ \hline
+0.75&6.04e-05\\ \hline
+1.0&5.42e-05\\ \hline
+1.25&8.98e-05\\ \hline
+.&.\\
+.&.\\
+.&.\\
+38.5&0.00011908\\ \hline
+38.75&0.000160297\\ \hline
+39.0&0.000129396\\ \hline
+39.25&0.000106692\\ \hline
+39.5&0.000217568\\ \hline
+39.75&0.00031329\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{your caption\protect\footnotemark}
+\footnotetext{Due to the size of this data set, this table has been abbreviated}
+\begin{tabular}{|l|l|}\hline
+0.0&0.00380653\\ \hline
+0.25&0.00277308\\ \hline
+0.5&0.00014633\\ \hline
+0.75&9.78e-05\\ \hline
+1.0&5.02e-05\\ \hline
+1.25&7.68e-05\\ \hline
+.&.\\
+.&.\\
+.&.\\
+38.5&0.00062031\\ \hline
+38.75&0.000626422\\ \hline
+39.0&0.000489179\\ \hline
+39.25&0.000491637\\ \hline
+39.5&0.000667836\\ \hline
+39.75&0.000771899\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{your caption\protect\footnotemark}
+\footnotetext{Due to the size of this data set, this table has been abbreviated}
+\begin{tabular}{|l|l|}\hline
+0.0&0.00412772\\ \hline
+0.25&0.00301049\\ \hline
+0.5&0.000124944\\ \hline
+0.75&8.87e-05\\ \hline
+1.0&8.95e-05\\ \hline
+1.25&0.00010309\\ \hline
+.&.\\
+.&.\\
+.&.\\
+38.25&0.000408575\\ \hline
+38.5&0.000302626\\ \hline
+38.75&0.000199188\\ \hline
+39.0&0.000162791\\ \hline
+39.25&0.000214143\\ \hline
+39.5&0.000280749\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{your caption\protect\footnotemark}
+\footnotetext{Due to the size of this data set, this table has been abbreviated}
+\begin{tabular}{|l|l|}\hline
+0.0&0.00391427\\ \hline
+0.25&0.00284933\\ \hline
+0.5&0.000129389\\ \hline
+0.75&8.74e-05\\ \hline
+1.0&5.12e-05\\ \hline
+1.25&6.36e-05\\ \hline
+.&.\\
+.&.\\
+.&.\\
+38.25&0.00033297\\ \hline
+38.5&0.000282793\\ \hline
+38.75&0.000271477\\ \hline
+39.0&0.000230445\\ \hline
+39.25&0.00025218\\ \hline
+39.5&0.000319506\\ \hline
+	\end{tabular}
+\end{center}
+\section{Equations}
+
+\section{: Pictures and Graphs}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{Mode_shape_1.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{Mode_shape_2.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\newpage
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{Mode_shape_3.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{Mode_shape_4.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\newpage
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{Mode_shape_5.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{Mode_shape_6.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\newpage
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{PEtd1.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{PEtd2.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\newpage
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{PEtd1.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{PEtd4.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\newpage
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{C:/Anaconda3/My_Scripts/Controls_Lab/tv1.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{C:/Anaconda3/My_Scripts/Controls_Lab/tg1.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\newpage
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{C:/Anaconda3/My_Scripts/Controls_Lab/tv2.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{C:/Anaconda3/My_Scripts/Controls_Lab/tg2.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\newpage
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{C:/Anaconda3/My_Scripts/Controls_Lab/tv3.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{C:/Anaconda3/My_Scripts/Controls_Lab/tg3.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\newpage
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{C:/Anaconda3/My_Scripts/Controls_Lab/tv4.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{C:/Anaconda3/My_Scripts/Controls_Lab/tg4.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\newpage
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{C:/Anaconda3/My_Scripts/Controls_Lab/fft1.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{C:/Anaconda3/My_Scripts/Controls_Lab/fft2.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\newpage
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{C:/Anaconda3/My_Scripts/Controls_Lab/fft3.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[width=100mm]{C:/Anaconda3/My_Scripts/Controls_Lab/fft4.png}
+\caption[your caption ref]{your caption}
+\end{figure}
+\newpage
+\section{: Python Code}
+\lstinputlisting[language=Python]{C:/Anaconda3/My_Scripts/Controls_Lab/Lab_10_Analysis.py}
+\section{: Lab Outline}
+(Attached On Next Page)\footnote{A footnote about pdf}
+\includepdf[pages=-]{C:/Anaconda3/My_Scripts/Controls_Lab/Lab_10_Outline.pdf}
+\end{document}

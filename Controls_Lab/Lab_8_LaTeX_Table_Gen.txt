@@ -1,0 +1,231 @@
+\begin{center}
+\captionof{table}{Run 1}
+	\begin{tabular}{|l|l|}\hline
+Time - Voltage	&Amplitude - Voltage\\ \hline
+0.0&0.00169628\\ \hline
+0.001&0.00176211\\ \hline
+0.002&0.00179502\\ \hline
+0.003&0.00179502\\ \hline
+0.004&0.00169628\\ \hline
+0.005&0.00169628\\ \hline
+.&.\\
+.&.\\
+.&.\\
+0.0&0.00169628\\ \hline
+nan&nan\\ \hline
+nan&nan\\ \hline
+nan&nan\\ \hline
+nan&nan\\ \hline
+nan&nan\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{Run 2}
+	\begin{tabular}{|l|l|}\hline
+Time - Voltage	&Amplitude - Voltage\\ \hline
+0.0&0.00144659\\ \hline
+0.001&0.00142682\\ \hline
+0.002&0.00142023\\ \hline
+0.003&0.00145318\\ \hline
+0.004&0.00145318\\ \hline
+0.005&0.00144\\ \hline
+.&.\\
+.&.\\
+.&.\\
+0.0&0.00144659\\ \hline
+2.999&-0.000859564\\ \hline
+2.998&-0.000859564\\ \hline
+2.997&-0.000859564\\ \hline
+2.996&-0.000852975\\ \hline
+2.995&-0.000852975\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{Run 3}
+	\begin{tabular}{|l|l|}\hline
+Time - Voltage&Amplitude - Voltage\\ \hline
+0.0&0.0198648\\ \hline
+0.001&0.0179229\\ \hline
+0.002&0.0191407\\ \hline
+0.003&0.019404\\ \hline
+0.004&0.0196673\\ \hline
+0.005&0.019766\\ \hline
+.&.\\
+.&.\\
+.&.\\
+0.0&0.0198648\\ \hline
+2.999&0.0399093\\ \hline
+2.998&0.0394486\\ \hline
+2.997&0.0387903\\ \hline
+2.996&0.0380991\\ \hline
+2.995&0.0402056\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{Run 4}
+	\begin{tabular}{|l|l|}\hline
+Time - Voltage&Amplitude - Voltage\\ \hline
+0.0&0.0330962\\ \hline
+0.001&0.0338203\\ \hline
+0.002&0.0343469\\ \hline
+0.003&0.0341494\\ \hline
+0.004&0.0351697\\ \hline
+0.005&0.0330303\\ \hline
+.&.\\
+.&.\\
+.&.\\
+0.0&0.0330962\\ \hline
+2.999&0.00824615\\ \hline
+2.998&0.00791702\\ \hline
+2.997&0.00824615\\ \hline
+2.996&0.00847655\\ \hline
+2.995&0.00841072\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{Run 5}
+	\begin{tabular}{|l|l|}\hline
+Time - Voltage	&Amplitude - Voltage\\ \hline
+0.0&0.00949688\\ \hline
+0.001&0.00883861\\ \hline
+0.002&0.00982602\\ \hline
+0.003&0.00943106\\ \hline
+0.004&0.009069\\ \hline
+0.005&0.00900318\\ \hline
+.&.\\
+.&.\\
+.&.\\
+0.0&0.00949688\\ \hline
+2.999&0.00824615\\ \hline
+2.998&0.00883861\\ \hline
+2.997&0.00903609\\ \hline
+2.996&0.00890443\\ \hline
+2.995&0.00844364\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{Run 6}
+	\begin{tabular}{|l|l|}\hline
+Time - Voltage	&Amplitude - Voltage\\ \hline
+0.0&0.00897026\\ \hline
+0.001&0.00910192\\ \hline
+0.002&0.009069\\ \hline
+0.003&0.00903609\\ \hline
+0.004&0.00913483\\ \hline
+0.005&0.00916774\\ \hline
+.&.\\
+.&.\\
+.&.\\
+0.0&0.00897026\\ \hline
+2.999&0.0095298\\ \hline
+2.998&0.00969437\\ \hline
+2.997&0.0097602\\ \hline
+2.996&0.00972728\\ \hline
+2.995&0.00972728\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{Run 7}
+	\begin{tabular}{|l|l|}\hline
+Time - Voltage	&Amplitude - Voltage\\ \hline
+0.0&0.00860821\\ \hline
+0.001&0.00926649\\ \hline
+0.002&0.00985894\\ \hline
+0.003&0.00943106\\ \hline
+0.004&0.00877278\\ \hline
+0.005&0.00923357\\ \hline
+.&.\\
+.&.\\
+.&.\\
+0.0&0.00860821\\ \hline
+2.999&0.00880569\\ \hline
+2.998&0.00969437\\ \hline
+2.997&0.00999059\\ \hline
+2.996&0.00969437\\ \hline
+2.995&0.00867404\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{Run 8}
+	\begin{tabular}{|l|l|}\hline
+Time - Voltage	&Amplitude - Voltage\\ \hline
+0.0&0.00916774\\ \hline
+0.001&0.00920066\\ \hline
+0.002&0.0092994\\ \hline
+0.003&0.0092994\\ \hline
+0.004&0.00923357\\ \hline
+0.005&0.00916774\\ \hline
+.&.\\
+.&.\\
+.&.\\
+0.0&0.00916774\\ \hline
+2.999&0.0258222\\ \hline
+2.998&0.0258551\\ \hline
+2.997&0.0259538\\ \hline
+2.996&0.0259538\\ \hline
+2.995&0.0259209\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{Run 9}
+	\begin{tabular}{|l|l|}\hline
+Time - Voltage	&Amplitude - Voltage\\ \hline
+0.0&0.0095298\\ \hline
+0.001&0.00956271\\ \hline
+0.002&0.00873986\\ \hline
+0.003&0.00900318\\ \hline
+0.004&0.00897026\\ \hline
+0.005&0.00910192\\ \hline
+.&.\\
+.&.\\
+.&.\\
+0.0&0.0095298\\ \hline
+2.999&0.0259868\\ \hline
+2.998&0.0253285\\ \hline
+2.997&0.026678\\ \hline
+2.996&0.0264146\\ \hline
+2.995&0.0261513\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{Run 10}
+	\begin{tabular}{|l|l|}\hline
+Time - Voltage	&Amplitude - Voltage\\ \hline
+0.0&0.0238803\\ \hline
+0.001&0.0239132\\ \hline
+0.002&0.0239132\\ \hline
+0.003&0.023979\\ \hline
+0.004&0.0240119\\ \hline
+0.005&0.023979\\ \hline
+.&.\\
+.&.\\
+.&.\\
+0.0&0.0238803\\ \hline
+2.999&0.00897026\\ \hline
+2.998&0.00900318\\ \hline
+2.997&0.00897026\\ \hline
+2.996&0.00903609\\ \hline
+2.995&0.00903609\\ \hline
+	\end{tabular}
+\end{center}
+\begin{center}
+\captionof{table}{Run 11}
+	\begin{tabular}{|l|l|}\hline
+Time - Voltage	&Amplitude - Voltage\\ \hline
+0.0&0.0234524\\ \hline
+0.001&0.0236499\\ \hline
+0.002&0.0237815\\ \hline
+0.003&0.0244727\\ \hline
+0.004&0.024736\\ \hline
+0.005&0.0235511\\ \hline
+.&.\\
+.&.\\
+.&.\\
+0.0&0.0234524\\ \hline
+2.999&0.00870695\\ \hline
+2.998&0.00831198\\ \hline
+2.997&0.00887152\\ \hline
+2.996&0.00946397\\ \hline
+2.995&0.0092994\\ \hline
+	\end{tabular}
+\end{center}

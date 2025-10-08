@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Code for Controls Final Project	</title>
+</head>
+<body>
+<h1>The code for the project.</h1>
+# -*- coding: utf-8 -*-<br>
+"""<br>
+Created on Mon Nov 26 13:04:20 2018<br>
+<br>
+<br>
+@author: jfowl<br>
+"""<br>
+import numpy as np<br>
+from numba import jit<br>
+from scipy.integrate import odeint<br>
+import matplotlib.pyplot as plt<br>
+import matplotlib.animation as animation<br>
+import My_Scripts.Python_Tools.html_writer as html<br>
+plt.close('all')<br>
+<br>
+page = html.html_writer('Controls_Final_Project')<br>
+<br>
+mi = 300  # initial weight of rocket in kg<br>
+Mars_m = 6.39e23  # mass of Mars in kg<br>
+G = 6.67408e-11  # Gravitational Constant SI units<br>
+Isp = 291  # Specific Impulse of rocket in seconds<br>
+g = 9.81  # Gravitational Acceleration on Earth m/s^2<br>
+tint = 0  # initial time<br>
+op_time = 43  # Operational Time of rocket in seconds<br>
+tot_time = 9000  # Total Simulation Time in seconds<br>
+nt = 1000000  # number of time steps<br>
+tvec = np.linspace(tint, tot_time, nt)  # time vector<br>
+dt = tvec[1]  # length of time step<br>
+T = 15000  # Thrust in Newtons<br>
+b = 3  # length of rocket in meters<br>
+d = 0.5  # diameter of rocket in meters<br>
+betai = 0  # intial thrust angle<br>
+thetai = 90  # intital pitch angle<br>
+d_Mars = 6779000  # diameter of Mars in meters<br>
+r_Mars = d_Mars/2  # radius of Mars in meters<br>
+start_pos = np.asarray([[0], [r_Mars]])  # starting position of rocket,<br>
+# surface of Mars<br>
+start_vel = np.asarray([[0], [0]])  # starting velocity in m/s<br>
+start_accel = np.asarray([[0], [0]])  # starting accelleration in m/s^2<br>
+escape_vel = 5.03e3  # escape velocity of Mars in m/s<br>
+start_theta = 90*(np.pi/180)<br>
+thetac = -0*(np.pi/180)<br>
+thetadc = 0<br>
+low_cut_off = -45*(np.pi/180)<br>
+high_cut_off = 45*(np.pi/180)<br>
+rollover = 0.1<br>
+<br>
+<br>
+def mdot(T, Isp, g):<br>
+    """Mass Flow Rate of fuel being expended by the rocket."""<br>
+    md = - (T/(Isp * g))<br>
+    return md<br>
+<br>
+<br>
+def Thrust_vec(beta, md):<br>
+    """Thrust Vector as a function of the thrust angle beta."""<br>
+    if md != 0:<br>
+        Tx = np.cos(beta)<br>
+        Ty = -np.sin(beta)<br>
+    else:<br>
+        Tx = 0<br>
+        Ty = 0<br>
+    return T*np.asarray([[Tx], [Ty]])<br>
+<br>
+<br>
+@jit<br>
+def theta_dd(beta, J, length, md):<br>
+    """Angular Acceleration of the rocket through pitch angle theta."""<br>
+    Tvec = Thrust_vec(beta, md)<br>
+    theta_dbld = -Tvec[1]*length/(2 * J)<br>
+    return theta_dbld<br>
+<br>
+<br>
+@jit<br>
+def T_vec_inert(beta, theta, md):<br>
+    """Thrust Vector in the inertial reference frame."""<br>
+    Tvec = Thrust_vec(beta, md)<br>
+    Rot_Mat = np.asarray([[np.cos(theta), -np.sin(theta)],<br>
+                          [np.sin(theta), np.cos(theta)]])<br>
+    Tvec_inert = np.dot(Rot_Mat, Tvec)<br>
+    return Tvec_inert<br>
+<br>
+<br>
+@jit<br>
+def Gravitational_Force_vec(mM, mR, pos):<br>
+    """Gravitational Force Vector."""<br>
+    r = np.sqrt(pos[0]**2 + pos[1]**2)<br>
+    scalar_term = (G*mM*mR)/(r**3)<br>
+    FGvec = scalar_term*pos<br>
+    return FGvec<br>
+<br>
+<br>
+@jit<br>
+def acc_vec(beta, theta, mM, mR, pos, md):<br>
+    """Acceleration vector."""<br>
+    Tvec_inert = T_vec_inert(beta, theta, md)<br>
+    FGvec = Gravitational_Force_vec(mM, mR, pos)<br>
+    avec = (1/mR)*(Tvec_inert - FGvec)<br>
+    return avec<br>
+<br>
+<br>
+def MoIx(m, r, h):<br>
+    """Moment of Inertia about the Yaw Axis."""<br>
+    J = (1/4)*m*r**2 + (1/3)*m*h**2<br>
+    return J<br>
+<br>
+<br>
+@jit<br>
+def non_linear_derivatives(Z, t):<br>
+    """Reduction to system of Equations for odeint."""<br>
+    Kp = 0.05<br>
+    Kd = 0.1<br>
+    x = Z[0]<br>
+    xd = Z[1]<br>
+    y = Z[2]<br>
+    yd = Z[3]<br>
+    theta = Z[4]<br>
+    thetad = Z[5]<br>
+    mass = Z[6]<br>
+    position = np.asarray([[x], [y]])<br>
+    if t <= op_time:<br>
+        md = mdot(T, Isp, g)<br>
+    else:<br>
+        md = 0<br>
+    J = MoIx(mass, d/2, b)<br>
+    e = thetac - theta<br>
+    ed = thetadc - thetad<br>
+    if t < rollover:<br>
+        beta = 0<br>
+    else:<br>
+        beta = Kp*e + Kd*ed<br>
+    if beta > high_cut_off:<br>
+        beta = high_cut_off<br>
+    elif beta < low_cut_off:<br>
+        beta = low_cut_off<br>
+    else:<br>
+        pass<br>
+    thetadd = float(theta_dd(beta, J, b, md))<br>
+    avec = acc_vec(beta, theta, Mars_m, mass, position, md)<br>
+    xdd = float(avec[0])<br>
+    ydd = float(avec[1])<br>
+    return [xd, xdd, yd, ydd, thetad, thetadd, md]<br>
+<br>
+<br>
+states = odeint(non_linear_derivatives,<br>
+                [float(start_pos[0]), 0, float(start_pos[1]), 0, start_theta,<br>
+                 0, mi],<br>
+                tvec)<br>
+<br>
+xlimmax = max([abs(x) for x in states[:, 0]])<br>
+xlimmin = -xlimmax<br>
+ylimmax = max([abs(x) for x in states[:, 2]])<br>
+ylimmin = -ylimmax<br>
+<br>
+<br>
+elevation = []<br>
+for i in range(len(states[:, 0])):<br>
+    r = (states[i, 0]**2 + states[i, 2]**2)**(1/2)<br>
+    e = r - r_Mars<br>
+    elevation.append(e)<br>
+<br>
+<br>
+plt.style.use(['dark_background'])<br>
+<br>
+#fig = plt.figure()<br>
+#circle = plt.Circle((0, 0), radius=r_Mars, fc='r')<br>
+#ax = fig.add_subplot(111, autoscale_on=False,<br>
+#                     xlim=(xlimmin - 1000, xlimmax + 1000),<br>
+#                     ylim=(ylimmin - 1000, ylimmax + 1000))<br>
+#ax.grid(True)<br>
+#ax.plot(float(start_pos[0]), float(start_pos[1]), 'b.')<br>
+#ax.add_patch(circle)<br>
+#line, = ax.plot([], [], 'g', lw=4)<br>
+#time_template = 'time = %.1fs'<br>
+#time_text = ax.text(0.8, 0.9, '', transform=ax.transAxes)<br>
+#<br>
+<br>
+#def init():<br>
+#    line.set_data([], [])<br>
+#    time_text.set_text('')<br>
+#    return line, time_text<br>
+#<br>
+#<br>
+#xs = []<br>
+#ys = []<br>
+#<br>
+#<br>
+#def animate(i):<br>
+#    xs.append(states[i, 0])<br>
+#    ys.append(states[i, 2])<br>
+#    line.set_data(xs, ys)<br>
+#    time_text.set_text(time_template % (i*dt))<br>
+#    return line, time_text<br>
+#<br>
+#<br>
+#ani = animation.FuncAnimation(fig, animate, np.arange(1, len(states[:, 3])),<br>
+#                              interval=1, blit=False, init_func=init)<br>
+#<br>
+##ani.save('orbit.html', fps=1000)<br>
+#plt.title('Rocket Orbiting Mars 2D')<br>
+#plt.xlabel('Horizontal')<br>
+#plt.ylabel('Vertical')<br>
+#plt.show()<br>
+<br>
+circle = plt.Circle((0, 0), radius=r_Mars, fc='r')<br>
+plt.figure(figsize=(5, 5))<br>
+ax = plt.gca()<br>
+ax.add_patch(circle)<br>
+plt.title('Rocket Takeoff and Orbit in 2D')<br>
+plt.xlabel('Horizontal Plane (m)')<br>
+plt.ylabel('Vertical Plane (m)')<br>
+plt.plot(states[:, 0], states[:, 2])<br>
+plt.savefig('orbit.png')<br>
+plt.show()<br>
+<br>
+plt.figure()<br>
+plt.plot(tvec, [(states[i, 1]**2 +<br>
+                 states[i, 3]**2)**(1/2) for i in range(len(states[:, 1]))])<br>
+plt.title('Time vs. Velocity')<br>
+plt.xlabel('Time')<br>
+plt.ylabel('Velocity')<br>
+plt.show()<br>
+<br>
+plt.figure()<br>
+plt.plot(tvec, elevation)<br>
+plt.title('Time vs. Elevation')<br>
+plt.xlabel('Time')<br>
+plt.ylabel('Elevation')<br>
+plt.show()<br>
+<br>
+#requirements = []<br>
+#req = open('Controls_Final_Project_Requirements.txt', 'r')<br>
+#for line in req:<br>
+#    requirements.append(line)<br>
+<br>
+body = []<br>
+for line in open(__file__, 'r'):<br>
+    body.append(line)<br>
+<br>
+page.title('Code for Controls Final Project')<br>
+page.open_body()<br>
+#page.heading('The project Requirements.')<br>
+#page.body(requirements)<br>
+page.heading('The code for the project.')<br>
+page.body(body)<br>
+page.close_body()<br>
+page.end_html()
+</body>
+</html>

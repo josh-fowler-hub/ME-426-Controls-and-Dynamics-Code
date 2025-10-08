@@ -1,0 +1,71 @@
+The Mars Ascent Vehicle (MAV) is scheduled to take oﬀ from the surface of Mars
+in 2026. A ﬁgure of the rocket is shown in the Figure above. The diameter of
+the rocket is 0.5 meters and the length is 3 meters. The initial weight of the
+rocket is 300 kg but mass drops oﬀ using the equation below:
+    m = −T/Ispg
+    
+where Isp = 291 sec is the speciﬁc impulse and g is the gravitational
+acceleration on Earth. T is the thrust of the rocket. MAV is equipped with a
+solid fuel rocket that turns on for 43 seconds and then promptly shuts oﬀ. The
+thrust of the rocket during the 43 seconds is 15 kN. The rocket is controlled
+by changing the vector of the thrust angle beta and is appropriately named Thrust
+Vector Control (TVC). The TVC angle beta is controlled either positive or negative
+but can only attain a 45 degree angle at maximum. The thrust given in the body
+frame is then:
+    [TxB TyB]^T= T[cos(beta) −sin(beta)]^T
+
+The rocket itself can rotate through the angle θ and thus the rotational
+dynamics can be deﬁned by the Newton-Euler equations of motion as shown below:
+    theta = −TyBb/2J
+
+where J is the moment of inertia of the satellite about the yaw axis. The main
+goal of the TVC system is to ensure that the rocket stays stable but also to
+orient the satellite to arrive at a stable orbit. The translational dynamics of
+the satellite can be written in the intertial frame as shown below:
+    x = TxI −FGx/m
+    y = TyI −FGy/m
+
+TxI and TyI are the thrust components in the inertial frame and can be given by
+the equation below:
+    [TxI TyI]^T = [[cos(theta) −sin(theta)]
+                   [sin(theta)  cos(theta)]] [TxB TyB]^T
+
+Gravitational forces from the surface of Mars are present and can be given in
+the equations below:
+    [FGx FGy]^T = G*mmars*m/r^3 [x y]^T
+    where:
+        G = 6.67408e−11 m3/(kg−s2) is the gravitational constant,
+        mmars = 6.39e23 kg is the mass of mars and r is Euclidean distance
+        from the center of the planet to the rocket r =sqrt(x^2 + y^2)
+
+The system deﬁned above is a 4 degree of freedom system. The states x,y and theta
+are second order and deﬁne the position of the system while the mass of the
+system is ﬁrst order. The control input is the TVC angle beta.
+1. Create a transfer function where T is the input and m is the output.
+2. Write the poles zeros and gain of the transfer function above.
+3. What will the system do when hit with a step input? Does this make sense?
+4. Take the equations of motion and create a transfer function where beta is the
+   input and theta is the output. You will have to linearize the equations to
+   obtain a useable transfer function. Assume the transfer function is valid
+   over the ﬁrst 43 seconds of ﬂight. Assume all initial conditions are zero.
+5. Write the poles, zeros and gain of the transfer function. Is the system
+   stable? Why or why not?
+6. Design a feedback control system to stabilize the pitch dynamics and
+   ensure that there is not steady state error or overshoot.
+7. Simulate your closed loop pitch dynamics using your linear system by
+   setting your pitch command to 90 degrees. Only simulate for 43 seconds.
+8. Simulate your closed loop pitch dynamics using your non-linear model by
+   setting your pitch command to 90 degrees. For your non-linear model, be sure
+   to include the eﬀect of losing mass due to expelling mass. Your inertia will
+   also decline as well. Comment on the diﬀerences between your nonlinear and
+   linear model. Again only simulate for 43 seconds.
+9. Create a 4DOF simulation where the initial x position is 3396200 m (the
+   radius of Mars). Assume all other initial conditions are zero.
+   Simulate the system for 7000 seconds and set theta command to 0. Plot r as
+   a function of time. What happens if TVC fails? 
+10. Using your 4DOF system set theta command back to 90 degrees and simulate
+    for 10000 seconds. Create a 2D plot with the x-coordinate on the x-axis and
+    the y-coordinate on the y-axis. If you did everything right your rocket
+    should obtain a nice orbit around Mars. Congrats. 
+11. Since a ﬁnal project section was not on the syllabus this will be graded
+    as a team project. However, I will allow you to create 10 minute videos.
